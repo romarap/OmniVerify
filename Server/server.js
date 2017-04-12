@@ -1,8 +1,10 @@
 
 var express = require('express');
+var favicon = require('express-favicon');
 var app = express();
 var server = require('http').Server(app);  
 var io = require('socket.io')(server);
+console.log('log1');
 
 //Express
 var bodyParser = require('body-parser');
@@ -11,15 +13,23 @@ var upload = multer(); // for parsing multipart/form-data
 app.use(express.static('public'));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(favicon(__dirname + '/public/favicon.png'));
+
+console.log('log2');
 
 
-
-
-var filename = __dirname + "\\log.txt";
+var filename = __dirname + "/log.txt";
 
 // -- Node.js Server ----------------------------------------------------------
-app.get('/', function(req, res) {  
+app.get('/', function(req, res) { 
+    console.log('about to serve /index.html')
+ 
     res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/test', function(req, res) {  
+    console.log('about to serve /test.html');
+    res.sendFile(__dirname + '/test.html');
 });
 
 app.get('/omniture',function (req, res) {
@@ -34,8 +44,8 @@ app.get('/omniture',function (req, res) {
   res.send('OK');
 });
 
-server.listen(8000, function () {
-  console.log('Example app listening on port 8000!')
+server.listen(8081, function () {
+  console.log('Example app listening on port 8081!');
 })
 
 // -- Setup Socket.IO ---------------------------------------------------------

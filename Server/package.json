@@ -1,6 +1,7 @@
 {
    "dependencies": {
         "express": "latest",
+        "express-favicon": "latest",
         "body-parser": "latest",
         "multer": "latest",
         "socket.io": "latest",
