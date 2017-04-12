@@ -1,0 +1,12 @@
+{
+   "dependencies": {
+        "express": "latest",
+        "body-parser": "latest",
+        "multer": "latest",
+        "socket.io": "latest",
+        "file-tail": "latest"
+   },
+   "scripts": {
+       "start": "node server"
+   }
+}
